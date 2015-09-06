@@ -1,0 +1,80 @@
+\section{Reviewer: 2}
+
+The article summarizes some of the issues with the analysis of time-series dyadic data in IR with a particular focus on the heroic independence assumptions often employed. They illustrate an approach based on Hoff (2014)'s multilinear regression framework and provide an analysis using the recently released ICEWS data.
+
+Assessment: This paper summarizes an exciting area that spans a number of fields (there are parallel developments in statistics, biostats, econometrics, cs. The authors do an excellent job of highlighting the applicability of these developments to political science and I think publishing this work in JPR would be an excellent way to increase the visibility of this approach to modeling. I have a few small suggestions which are mostly focused on ensuring that the paper is readable by as many political scientists as possible. They are organized below into major and minor comments although none of these points are dealbreakers.
+
+\section{Reviewer: 2}
+
+The article summarizes some of the issues with the analysis of time-series dyadic data in IR with a particular focus on the heroic independence assumptions often employed. They illustrate an approach based on Hoff (2014)'s multilinear regression framework and provide an analysis using the recently released ICEWS data.
+
+Assessment: This paper summarizes an exciting area that spans a number of fields (there are parallel developments in statistics, biostats, econometrics, cs. The authors do an excellent job of highlighting the applicability of these developments to political science and I think publishing this work in JPR would be an excellent way to increase the visibility of this approach to modeling. I have a few small suggestions which are mostly focused on ensuring that the paper is readable by as many political scientists as possible. They are organized below into major and minor comments although none of these points are dealbreakers.
+
+\subsection{Major Comments}
+
+This is an important piece but necessarily a bit more technical than the median political scientists will be comfortable with. A couple of areas where things might be improved a bit. For equation 4, you may want to write out the equation for a single observation in addition to this version in terms of multilinear operators. Seeing the equation in this way might be helpful to people less comfortable with linear algebra. In general pg 6 is a bit dense for non-math people. Obviously some of this is inevitable but perhaps signaling the example a bit earlier and using that for illustration would help. \\
+
+\textcolor{blue}{\emph{
+	We have rewritten parts of the paper to more clearly set up the discussion that started in the original page 6 of this paper. We have also added in an explanation for how to write out the model for a single observation into the text of the paper following our presentation of the model using multilinear operators. The model for a single country-country-variable observation can be written as: 
+	\begin{equation}
+	y_{ijvt} = \sum_i' \sum_j' \sum_k' b_{1ii'} b_{2jj'} b_{3kk'} x_{i'j'k't} ,  
+	\end{equation}
+	where $i$ represents a sender country, $j$ a target, $k$ a particular relational variable, and $t$ a time point. 
+}} \\
+
+The second readability piece concerns the opening. I read an earlier draft of this paper when it was first posted on arxiv (\url{http://arxiv.org/pdf/1504.08218.pdf}). For what its worth, I prefer the opening in that draft because it is cast in terms of a concrete set of examples/questions rather than the more abstract formulation in the submission here. Obviously its a stylistic preference but I think others will likely find it a more engaging opening. \\
+
+\textcolor{blue}{\emph{
+	We have tried to restructure the introduction through introducing a set of concrete questions towards the beginning of the manuscript that the model we introduce here can help to study. We have chosen not to focus on a single, published article in the introduction because we want to highlight the fact that the issues we raise with the dyadic framework are not just limited to one or two articles but are very much emblematic of how research into relational data structures is done across the field.
+}} \\
+
+The problem is posed primarily in terms of bias in the intro. I think there is a tension here between bias and accurate estimates of the parameter uncertainty (via standard errors, posterior variance etc.). Discussing for example the Erikson et al (2014) critique is really more about standard errors than about biased parameter estimates. Obviously without some very strong independence assumptions between blocks of parameters the estimator will have both sets of problems (biased parameter estimates and bad SEs) but the problems could be a bit more clearly articulated. \\
+
+\textcolor{blue}{\emph{
+	We agree that both sets of problems are likely when network dependencies are ignored, we have tried to clarify this point in the opening paragraph.
+}} \\
+
+\subsection{Detailed Comments}
+
+``Though this design has remained standard for decades, this approach has been repeatedly argued to produce biased statistical results'' This could probably use a list of citations. Goodness knows there are plenty. \\
+
+\textcolor{blue}{\emph{
+	Per your suggestion, we have added in additional citations. 
+}} \\
+
+Citation issue ``Hoff (201)''. (although I like the idea of Hoff writing about this in 201AD) \\
+
+\textcolor{blue}{\emph{
+	Fixed this citation error.
+}} \\
+
+when introducing the data format on pg 5 you may want to explicitly say that variables = ``relational measures'' as you switch between the two and folks without a networks background may be confused. \\
+
+\textcolor{blue}{\emph{
+	Added in a parenthetical note indicating that the two are equivalent.
+}} \\
+
+you probably need to cite Schrodt's paper for Cameo. YOu also may want to attribute the quad counts to him as well since I think Yonamine is just summarizing prior work here? \\
+
+\textcolor{blue}{\emph{
+	We added a citation to Schrodt, Gerner and Yilmaz (2009) to account for their work on the CAMEO codings. Yonamine (pg. 8, 2011) cites Duval and Thompson (1980) for developing the original quad measures so we added a citation to their work as well.
+}} \\
+
+``the model performance noticeably declines'' in what sense? Speed? Predictive Accuracy? RMSE? \\
+
+\textcolor{blue}{\emph{
+	When including all four relational covariates, the model takes noticeably longer to run, and the accuracy across each of the relational dimensions also declines (higher RMSE and lower $R^2$). 
+}} \\
+
+in summarizing the results I'd give the wall clock time so people at least have some sense of what it takes to fit these models. \\
+
+\textcolor{blue}{\emph{
+	We added in a footnote at the beginning of the results section noting that in its current iteration the multilinear tensor regression (MLTR) model takes a lengthy time to run. In the application that we provide in this paper, running the Gibbs sampler for 8,000 iterations took approximately 28 hours. We are working on rewriting the MLTR model in C++ using the Rcpp framework to help speed up the sampler.
+}} \\
+
+the performance analysis in Figure 8 seems a bit silly in the context of Ward's previous work on the importance of out-of-sample forecasting. I can definitely understand why its set up this way but it does seem worth acknowledging the tension here. In some sense the things being diagnosed here would perhaps be better set up with posterior predictive checks. \\
+
+\textcolor{blue}{\emph{
+	We agree that the performance analysis here is rudimentary. However, the goal of this specific paper was to highlight the capabilities of this model in shedding greater light on the dependencies underlying dyadic interactions. In the iteration of the model we present here there is clearly meaningful room for improvement in terms of performance. The next iteration of this project will be much more focused on enhancing the predictive performance of this model.
+}} \\
+

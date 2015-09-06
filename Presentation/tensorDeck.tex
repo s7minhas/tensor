@@ -1,0 +1,422 @@
+%!TEX TS-program = xelatex
+\documentclass[10pt, compress]{beamer}
+
+\usetheme[usetitleprogressbar]{m}
+<<<<<<< HEAD
+
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{dcolumn}
+\usepackage[scale=2]{ccicons}
+\usepackage{color}
+
+\graphicspath{{Graphics/}}
+
+\title[Tensors]{\textsc{Relax, Tensors Are Here...with Exogenous Covariates}}
+=======
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\graphicspath{{Graphics/}}
+\title[Tensors]{\textsc{Relax, Tensors Are Here}}
+>>>>>>> origin/master
+\author[Hoff, Minhas, \& Ward]{Peter D. Hoff, Shahryar Minhas, \& Michael D. Ward} 
+\date{\today}
+
+\begin{document}
+\frame{\titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+  \frametitle{Model Specification}
+  \vspace{-5mm}
+  \begin{itemize}
+  \item Dependent variables: Log(Exports) and Stdzed(Material Conflict). 
+  \item Direct ($i$), reciprocal ($ji$) and transitive ($ijk$) 1 month lags of these included as IVs.
+  \item Exogenous Covariates:
+    \begin{itemize}
+    \item Number of Preferential Trade Agreements (PTA) between $i$ and $j$ (this is an undirected, yearly level variable). Direct and transitive version of this variable included as covariates.
+    \item Presence of a defensive alliance relationship between $i$ and $j$ (undirected, yearly level). Direct and transitive versions.
+    \item Centroid distance between $i$ and $j$ (directed). Direct version.
+    \item Polity, monthly level variable. Polity of sender included.
+    \item Log(GDP), yearly level variable but imputed at the monthly level. GDP of sender.
+    \item Log(Population), yearly level variable but imputed at the monthly level. Population of sender.
+    \item Log(Total Exports to any country), monthly level variable. Exports of sender.
+    \end{itemize}
+=======
+  \frametitle{Question}
+  \begin{itemize}
+  \item Advances in computerized coding have enabled us to develop large datasets of state interactions at low levels of temporal aggregation
+  \item How can we leverage this information to generate meaningful measures of how states relate to one another
+>>>>>>> origin/master
+  \end{itemize}    
+} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+  \frametitle{Sample \& Data}
+  \begin{itemize}
+  \item  Our sample is comprised of 161 countries over the period of March 2001 to December 2014
+  \item Data sources:
+  \begin{itemize}
+    \item Exports: \href{http://data.imf.org/?sk=8aa6eb7c-598b-4d3b-82f4-adab95d23145&dsId=DS_1414779485682}{\textcolor{blue}{IMF Direction of Trade Statistics}}
+    \item Material Conflict: ICEWS
+    \item PTA: \href{http://www.designoftradeagreements.org/}{\textcolor{blue}{Design of Trade Agreements Database}}
+    \item Alliance: \href{http://www.correlatesofwar.org/news/alliances-data-set-v4-1-available-1}{\textcolor{blue}{Correlates of War}}
+    \item Distance: \href{http://nils.weidmann.ws/projects/cshapes}{\textcolor{blue}{cshapes}}
+    \item Polity: \href{http://www.systemicpeace.org/polity/polity4.htm}{\textcolor{blue}{Polity IV Project}}
+    \item GDP, Population: \href{https://www.imf.org/external/pubs/ft/weo/2014/02/weodata/index.aspx}{\textcolor{blue}{IMF World Economic Outlook Database}}
+  \end{itemize}
+=======
+  \frametitle{Proposal}
+  \begin{itemize}
+  \item Use the MLTR framework developed by Hoff (2014) to generate a latent space representation of how countries interact with each other across a variety of dimensions
+  \end{itemize}    
+} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+  \frametitle{Sample \& Data}
+  \begin{itemize}
+  \item ICEWS project collects data on state interactions across a variety of dimensions: Verbal Cooperation, Material Cooperation, Verbal Conflict, and Material Conflict
+  \item We aggregate this data to the monthly level for the 50 highest income countries
+>>>>>>> origin/master
+  \end{itemize}    
+} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+  \frametitle{Modeling Approach}
+  \begin{itemize}
+  \item Multilinear tensor regression framework
+  \item MCMC run for 1300 iterations with first 600 used as burn-in\footnote{Using this many datapoints takes time the MCMC will keep running for another 3700 iterations so these results are preliminary, but trace plots at the end of this pdf look stable after 600 iterations}
+=======
+\frametitle{Quad Variable Monthly Counts}
+  \centering
+  \includegraphics[width=1\textwidth]{dvMonthly.pdf}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+  \frametitle{Modeling Approach}
+  \begin{itemize}
+  \item We estimate our model over three separate time periods to develop a measure of state interest that varies over time: 2001-2005, 2006-2010, 2011-2014
+>>>>>>> origin/master
+  \item The model has the following form:
+  \begin{align*}
+  \textbf{Y} = \textbf{X} \times \{\boldsymbol{\beta_{1}}, \boldsymbol{\beta_{2}}, \boldsymbol{\beta_{3}} \} + \textbf{E}
+  \end{align*}
+<<<<<<< HEAD
+  \item \textbf{Y} is a $161 \times 161 \times 2 \times 165$ array
+  \item \textbf{X} is a $161 \times 161 \times 13 \times 165$ array, where each of the 13 variables is lagged by one month
+=======
+  \item \textbf{Y} is a $50 \times 50 \times 4 \times t$ array, where $t$ is equal to the number of months within each period
+  \item \textbf{X} is a $50 \times 50 \times 12 \times t$ array, where each of the 12 variables is lagged by one month
+>>>>>>> origin/master
+  \end{itemize}    
+} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+\frametitle{$\boldsymbol{\beta_{1}}$ \& $\boldsymbol{\beta_{2}}$, Sig. $+$ shown, $\alpha = 0.01$}
+  \vspace{-15mm}
+  \begin{figure}[ht]
+  \centering
+    \begin{tabular}{c}
+      \includegraphics[width=1\textwidth]{net.pdf} \\
+      \includegraphics[width=.9\textwidth]{map.pdf}
+    \end{tabular}
+  \end{figure}
+=======
+\frametitle{$\boldsymbol{\beta_{1}}$ \& $\boldsymbol{\beta_{2}}$: 2001-2005}
+Significant positive effects shown, $\alpha = 0.01$
+  \centering
+  \includegraphics[width=1\textwidth]{2001-2005_net.pdf}
+>>>>>>> origin/master
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+\frametitle{$\boldsymbol{\beta_{3}}$}
+  \centering
+  \resizebox{1\textwidth}{!}{\input{Graphics/coef.tex}}  
+=======
+\frametitle{$\boldsymbol{\beta_{1}}$ \& $\boldsymbol{\beta_{2}}$: 2006-2010}
+Significant positive effects shown, $\alpha = 0.01$
+  \centering
+  \includegraphics[width=1\textwidth]{2006-2010_net.pdf}
+>>>>>>> origin/master
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+\frametitle{Endog. Effects of Log(Exports)}
+  \vspace{-.3in}
+  \begin{figure}[ht]
+  \centering
+    \begin{tabular}{ccc}
+      \hspace{-.63in}
+      \resizebox{.38\textwidth}{!}{\input{Graphics/exp_ij_effect.tex}}  &
+      \resizebox{.38\textwidth}{!}{\input{Graphics/exp_ji_effect.tex}}  &
+      \resizebox{.38\textwidth}{!}{\input{Graphics/exp_ijk_effect.tex}}  
+    \end{tabular}
+  \end{figure}
+=======
+\frametitle{$\boldsymbol{\beta_{1}}$ \& $\boldsymbol{\beta_{2}}$: 2011-2014}
+Significant positive effects shown, $\alpha = 0.01$
+  \centering
+  \includegraphics[width=1\textwidth]{2011-2014_net.pdf}
+>>>>>>> origin/master
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+\frametitle{Endog. Effects of Std(Matl. Conf.)}
+  \vspace{-.3in}
+  \begin{figure}[ht]
+  \centering
+    \begin{tabular}{ccc}
+      \hspace{-.63in}
+      \resizebox{.38\textwidth}{!}{\input{Graphics/mconf_ij_effect.tex}}  &
+      \resizebox{.38\textwidth}{!}{\input{Graphics/mconf_ji_effect.tex}}  &
+      \resizebox{.38\textwidth}{!}{\input{Graphics/mconf_ijk_effect.tex}}  
+    \end{tabular}
+  \end{figure}
+=======
+\frametitle{$\boldsymbol{\beta_{3}}$: 2001-2005}
+  \centering
+  \includegraphics[width=1\textwidth]{2001-2005_coef.pdf}
+>>>>>>> origin/master
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+\frametitle{Effect of PTAs: Direct and Transitive}
+  \vspace{-.35in}
+  \begin{figure}[ht]
+  \centering
+    \begin{tabular}{cc}
+      \resizebox{.45\textwidth}{!}{\input{Graphics/pta_ij_effect.tex}}  &
+      \resizebox{.45\textwidth}{!}{\input{Graphics/pta_ijk_effect.tex}}  
+    \end{tabular}
+  \end{figure}
+=======
+\frametitle{$\boldsymbol{\beta_{3}}$: 2006-2010}
+  \centering
+  \includegraphics[width=1\textwidth]{2006-2010_coef.pdf}
+>>>>>>> origin/master
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+\frametitle{Aggregate Performance \& RMSE by i-j}
+  \input{Graphics/rsq.tex}
+  \begin{figure}[ht]
+  \centering
+    \begin{tabular}{cc}
+    \hspace*{-.63in}
+      \includegraphics[width=.6\textwidth]{expiperf.pdf} & 
+      \includegraphics[width=.6\textwidth]{mconfiperf.pdf}
+    \end{tabular}
+  \end{figure}
+=======
+\frametitle{$\boldsymbol{\beta_{3}}$: 2011-2014}
+  \centering
+  \includegraphics[width=1\textwidth]{2011-2014_coef.pdf}
+>>>>>>> origin/master
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+\frametitle{Trace Plots for $\boldsymbol{\beta_{3}}$}
+  \centering
+  \includegraphics[width=1\textwidth]{trace.pdf}
+=======
+\frametitle{$R^{2}$ by model}
+  \centering
+  \vspace*{-.3in}
+  \input{Graphics/rsq}
+>>>>>>> origin/master
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+  \frametitle{Comparison with directed dyadic model}
+  \begin{itemize}
+  \item Here I run a similar analysis using the standard directed dyadic (dd) framework
+  \item The covariates for both models are the same 
+  \item Instead of taking a vector autoregression approach, I just run two separate directed dyadic linear regressions
+  \end{itemize}
+} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+  \frametitle{dd Coefficient Results, std. errors in (), $^*$ sig. at $p< 0.05 $ }
+  \vspace{-.3in}
+  \tiny{\input{Graphics/dyadcoef.tex}}
+=======
+\frametitle{RMSE Across t by i-j: 2001-2005}
+  \centering
+  \vspace*{-.3in}
+  \includegraphics[width=1\textwidth]{2001-2005_iperf.pdf}
+>>>>>>> origin/master
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+  \frametitle{Parameter Estimate Comparisons: MLTR \& dd}
+  \footnotesize{+ = sig at 95\% interval and positive} \\
+  \footnotesize{--\; = sig at 95\% interval and negative}
+  
+  \centering
+  \begin{tabular}{l | cc | cc}
+~ & \multicolumn{2}{c}{Log(Exports)} & \multicolumn{2}{c}{Std(Matl. Conf.)} \\
+\hline\hline
+~ & MLTR & Dyadic & MLTR & Dyadic \\
+\hline
+  Log(Exports)$_{ij, t-1}$ & + & + & -- & -- \\
+  Std(Matl. Conf.)$_{ij, t-1}$ & -- &  & + & + \\
+  Log(Exports)$_{ji, t-1}$ & + & + & -- &  \\
+  Std(Matl. Conf.)$_{ji, t-1}$ &  &  & + & + \\
+  Log(Exports)$_{ijk, t-1}$ & + & + & + & + \\
+  Std(Matl. Conf.)$_{ijk, t-1}$ &  & -- & + & -- \\
+  PTAs$_{ij, t-1}$ & + & + & + &  \\
+  PTAs$_{ijk, t-1}$ & -- & -- & -- & -- \\
+  Distance$_{ij, t-1}$ & -- & -- & -- & -- \\
+  Polity$_{i, t-1}$ & + & + & + & -- \\
+  Log(GDP)$_{i, t-1}$ & + & + & -- & + \\
+  Log(Population)$_{i, t-1}$ & -- & -- & + & + \\
+  Log(Total~Exports)$_{i, t-1}$ & + & + & + & -- 
+  \end{tabular}
+=======
+\frametitle{RMSE Across t by i-j: 2006-2010}
+  \centering
+  \vspace*{-.3in}
+  \includegraphics[width=1\textwidth]{2006-2010_iperf.pdf}
+>>>>>>> origin/master
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+\frametitle{DD Aggregate Performance \& RMSE by i-j}
+  \input{Graphics/dyadrsq.tex}
+  \begin{figure}[ht]
+  \centering
+    \begin{tabular}{cc}
+      \hspace*{-.63in}
+      \includegraphics[width=.6\textwidth]{dyadexpiperf.pdf} & 
+      \includegraphics[width=.6\textwidth]{dyadmconfiperf.pdf}
+    \end{tabular}
+  \end{figure}
+=======
+\frametitle{RMSE Across t by i-j: 2011-2014}
+  \centering
+  \vspace*{-.3in}
+  \includegraphics[width=1\textwidth]{2011-2014_iperf.pdf}
+>>>>>>> origin/master
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+  \frametitle{Performance Comparisons: MLTR \& DD}
+
+\begin{itemize}
+\item Across all cases the R$^{2}$ is higher using the MLTR approach for both exports (95\% v. 89\%) and matl. conf. (28\% v. 26\%)
+\item MLTR has a lower RMSE in $\approx$ 57\% of cases for Log(Exports)
+\item MLTR has a lower RMSE in $\approx$ 80\% of cases for Std(Matl. Conf.)
+\item Across all cases the RMSE is lower using the MLTR approach for both exports (2.32 v. 2.37) and matl. conf. (0.85 v. 0.86)
+\item However, as shown by the aggregate RMSE statistics right above, the differences in performance are small
+\item Additionally, in the next two slides I break out the performance, in terms of RMSE, by showing the results for OECD--OECD and Not OECD--Not OECD countries
+\end{itemize}
+
+=======
+\frametitle{Trace Plots for $\boldsymbol{\beta_{3}}$: 2001-2005}
+  \centering
+  \includegraphics[width=1\textwidth]{2001-2005_trace.pdf}
+>>>>>>> origin/master
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+  \frametitle{Performance on OECD--OECD countries: Log(Exports)}
+  \centering
+  \includegraphics[width=1\textwidth]{oecdexpiperf.pdf}
+=======
+\frametitle{Trace Plots for $\boldsymbol{\beta_{3}}$: 2006-2010}
+  \centering
+  \includegraphics[width=1\textwidth]{2006-2010_trace.pdf}
+>>>>>>> origin/master
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frame
+{
+<<<<<<< HEAD
+  \frametitle{Performance on OECD--OECD countries: Std(Matl. Conf.)}
+  \centering
+  \includegraphics[width=1\textwidth]{oecdconfiperf.pdf}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+=======
+\frametitle{Trace Plots for $\boldsymbol{\beta_{3}}$: 2011-2014}
+  \centering
+  \includegraphics[width=1\textwidth]{2011-2014_trace.pdf}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+>>>>>>> origin/master
+\plain{Next Steps?}
+
+\end{document}

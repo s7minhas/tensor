@@ -1,0 +1,81 @@
+\section{Reviewer: 3}
+
+This paper presents a linear regression model that permits plausible and interpretable linear models for longitudinal relational data, allowing the representation of reciprocity and transitivity in an autoregressive approach. It seems a good step forward, but not enough information is given about the model specification. 
+
+Since this is a linear model, it is for numerical dyadic data, and the main alternative approach seems to be Multiple Regression Quadratic Assignment Procedure (MRQAP). A comparison with MRQAP seems called for.
+
+\subsection{Major Comments}
+
+The major question that is still open after reading the paper, is the assumption with respect to the error terms in the regression; or, equivalently, the assumption on Sigma in (3). Without any information about this, the model cannot be assessed, and section 5.3 falls flat. \\
+
+\textcolor{blue}{\emph{
+	This is the standard assumption of all VAR models: Temporal dependence is described by the autoregression ($\Theta$), and contemporaneous covariance is described by $\Sigma$. To this issue, we are not sure what other alternatives to the model the reviewer might be suggesting. We do agree, however, that the performance analysis here is rudimentary. However, the goal of this specific paper was to highlight the capabilities of this model in shedding greater light on the dependencies underlying dyadic interactions. In the iteration of the model we present here there is clearly meaningful room for improvement in terms of performance. The next iteration of this project will be much more focused on enhancing the predictive performance of this model.
+}} \\
+
+Since this is a linear model, it is for numerical dyadic data, and the main alternative approach seems to be MRQAP. A comparison with MRQAP seems called for. \\
+
+\textcolor{blue}{\emph{
+	The MRQAP is a valuable model in dealing with dependencies in network data, and we have added a brief discussion of it to this paper. However, the goals of the MRQAP framework differs markedly from the multilinear tensor regression (MLTR) modeling framework that we introduce here. Most notably, the model that we are applying here is to be used for instances in which scholars want to explore the coevolution of endogenous, longitudinal networks while also providing an explicit representation of network dependencies, such as reciprocity and transitivity. The MRQAP framework has proven to be a very useful alternative to standard OLS models for studying dyadic relational data, in terms of its ability to correct for structural autocorrelation in the calculation of standard errors. However, as Dekker et al. (2007, pg. 564) note the MRQAP framework is not appropriate when ``the focus is on modeling specific network-related dependence structure(s)'', which is our explicit goal here. Further even if we were to shift our focus and move away from providing a representation of the network-related dependence structures, we would need to develop a panel vector autoregression version of the MRQAP procedure. This would certainly be a valuable addition to the network statistics toolkit, but providing it is beyond the scope of this paper.
+}} \\
+
+\subsection{Detailed Comments}
+
+The title is funny and not convincing. \\
+
+\textcolor{blue}{\emph{
+	We have removed any humor from the title. We have retitled it to, ``A New Approach to Analyzing Coevolving Longitudinal Networks in International Relations''. 
+}} \\
+
+p. 3. In the stochastic actor-oriented model of Snijders (2001), the utility of actors can depend on their covariates. Therefore, it is not true that the model assumes that all actors have the same utility. \\
+
+\textcolor{blue}{\emph{
+	We agree that for the case in which nodal covariates are added to the SAOM approach then nodal heterogeneity is allowed. We have clarified this within the paper during our discussion of the SAOM approach.
+}} \\
+
+p. 4. Please specify the type of heterogeneity between the nodes that is represented in the multilinear tensor model of Hoff. For example, do the nodes have different regression coefficients? \\
+
+\textcolor{blue}{\emph{
+	The nodes are heterogeneous in how their actions depend on the previous actions of a given country, this is captured by the $\bl B_{1}$ and $\bl B_{2}$ terms. For example, for each county $i$, the coefficient $b_{1iUSA}$ describes how predictive the actions of the USA are of the future actions of country $i$. Heterogeneity of these coefficients across countries $i$ describes heterogeneity of the nodes in terms of their dependence on the actions of USA.
+}} \\
+
+p. 4 Writing that Hoff (2014) provides an approach that combines both of these approaches in terms of their strengths suggests too much. The approach by Hoff (2014) is different from both the latent space and the actor-oriented models. It does represent reciprocity and transitivity and unobserved heterogeneity between the nodes, but by going into a different direction than these two earlier models. More importantly, it is a model for numerical dyadic data, whereas the actor-oriented model and the latent space model are for binary data. Therefore, a better comparison is MRQAP, which also is a method for a linear model. \\
+
+\textcolor{blue}{\emph{
+	The General Bilinear Mixed Effects (GBME) approach developed by Hoff (2005) is different than the approach we discuss here, and we have modified that section of the paper to more clearly delineate the differences. However, it is important to note that the GBME approach, unlike ERGM based approaches such as SAOM, is suited for handling a variety of relational data types, specifically: gaussian, poisson, or binomial (\url{http://www.stat.washington.edu/people/pdhoff/Code/hoff_2005_jasa/}). 
+}} \\
+
+p. 5. The paper writes about a set of v relational covariates. In my understanding, a covariate is an exogenous variable. I think that here the author really means a set of v interdependent dependent variables. Please be quite specific in the terminology here. \\
+
+\textcolor{blue}{\emph{
+	We have removed mentions of ``covariates'' in order to ease interpretation. 
+}} \\
+
+p. 6. Please explain Tucker product. \\
+
+\textcolor{blue}{\emph{
+	The Tucker product is a multilinear operator that is used for higher-order singular value decomposition (SVD), the same way that matrix multiplication is used for matrix SVD (De Lathauwer et al., 2000 ; Kolda \& Bader, 2009). The Tucker product can be ``defined'' by writing out the equation for the model with respect to the scalar entries: $y_{ijkt} = \sum_i' \sum_j' \sum_k' b_{1ii'} b_{2jj'} b_{3kk'} x_{i'j'k't}$. To illustrate how the Tucker product is calculated, say that we want to get the following expression: $\bl Y = \bl X \boldsymbol{\times} \{ \bl B_{1}, \bl B_{2}, \bl B_{3}\},$ where ``$\boldsymbol{\times}$'' denotes the Tucker product, $\bl Y$ has dimensions $a_{1} \times a_{2} \times a_{3}$ and $\bl X$ has dimensions $b_{1} \times b_{2} \times b_{3}$. The first step involves reshaping $\bl X$ so that it is a matrix with  dimensions $b_{1} \times (b_{2} \times b_{3})$, then we multiply on the left by $\bl B_{1}$, next we reshape the result to an $a_{1} \times b_{2} \times b_{3}$ matrix. This procedure would be applied iteratively among the remaining dimensions. 
+	}} \\
+
+p. 9. Is the quantile transformation applied to all variables simultaneously, or were quantiles computed per variable? \\
+
+\textcolor{blue}{\emph{
+	The quantile transformations are computed per variable.
+}} \\
+
+p. 3. Jackson-Wolinsky should be spelled correctly, and given with a reference.
+
+\textcolor{blue}{\emph{
+	We have corrected the spelling error and added a reference.
+}} \\
+
+p. 6. If possible, it would be nice to avoid the index l, for confusion with the number 1. (On my screen in this font I can1t see the difference.)
+
+\textcolor{blue}{\emph{
+	We have changed the index to avoid confusion. 
+}} \\
+
+p. 11. indentifiable role: I guess the author meant to write identifiable, but this invites confusion with model identifiability, which cannot have been intended.
+
+\textcolor{blue}{\emph{
+	We understand the possibility for confusion so we replaced ``identifiable'' with ``meaningful''.
+}} \\

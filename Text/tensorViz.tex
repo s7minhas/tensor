@@ -1,0 +1,59 @@
+\begin{tikzpicture}
+
+	% Green
+	\begin{scope}[xshift=1cm, yshift=1cm]
+	\node{
+		\begin{tikzpicture}[scale=.5]
+			 \draw[thin, black,fill=green3] (0,0) grid (4,4) rectangle (0,0) ;
+		\end{tikzpicture}
+	};
+	\end{scope}
+
+	\begin{scope}[xshift=.5cm, yshift=.5cm]
+	\node[](green){
+		\begin{tikzpicture}[scale=.5]
+			 \draw[thin, black,fill=green2] (0,0) grid (4,4) rectangle (0,0) ;
+		\end{tikzpicture}
+	} ;
+	\end{scope}
+
+	\begin{scope}
+	\node{
+		\begin{tikzpicture}[scale=.5]
+			 \draw[thin, black,fill=green1] (0,0) grid (4,4) rectangle (0,0) ;
+%			\node at (3.5,3.5) { \tiny{ $y_{i j v t }$ } }; 
+		\end{tikzpicture}
+	};
+	\end{scope}
+	
+	% Blue
+	\begin{scope}[xshift=4.5cm, yshift=1cm]
+	\node{
+		\begin{tikzpicture}[scale=.5]
+			 \draw[thin, black,fill=blue3] (0,0) grid (4,4) rectangle (0,0) ;
+		\end{tikzpicture}
+	};
+	\end{scope}
+
+	\begin{scope}[xshift=4cm, yshift=.5cm]
+	\node[](blue){
+		\begin{tikzpicture}[scale=.5]
+			 \draw[thin, black,fill=blue2] (0,0) grid (4,4) rectangle (0,0) ;
+		\end{tikzpicture}
+	};
+	\end{scope}
+
+	\begin{scope}[xshift=3.5cm]
+	\node{
+		\begin{tikzpicture}[scale=.5]
+			 \draw[thin, black,fill=blue1] (0,0) grid (4,4) rectangle (0,0) ;
+		\end{tikzpicture}
+	};
+	\end{scope}
+	
+%	% Add dots
+%	\begin{scope}[]
+%		\draw[dotted] (blue) -- (green) ;
+%	\end{scope}
+	
+\end{tikzpicture}
