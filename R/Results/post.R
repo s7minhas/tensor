@@ -194,7 +194,7 @@ lapply(BPS, function(beta){
 	# fname=paste0(outPath, beta[[4]], '_net.pdf')	
 	# pdf(file=fname, width=12, height=5)
 	fname=paste0(outPath, beta[[4]], '_net.eps')	
-	postscript(file=fname, width=12, height=5, fonts=c("serif", "Palatino"))	
+	postscript(file=fname, width=12, height=5, fonts=c("serif", "Palatino"), horizontal=FALSE, onefile = FALSE, paper = "special")	
 	par(mfrow=c(1,2), mar=c(1,1,1,1), mgp=c(1.5,.5,0))		
 	B = beta[[1]]
 	LB = apply( B[,,burn:dim(B)[3]], c(1,2), quantile, prob=alpha )

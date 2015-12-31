@@ -20,8 +20,8 @@ ccols = rgb( slon^2,slat^2,(1-sqrt(slon*slat))^2)
 if(genCntryMap){
 	mapCol = ccols[match(cmap$ISO1AL3, cntries)]
 	mapCol[is.na(mapCol)] = 'grey'
-	fname=paste0(outPath, 'map.pdf')
-	pdf(file=fname, width=8, height=4)
+	fname=paste0(outPath, 'map.eps')
+	postscript(file=fname, width=8, height=4, horizontal=FALSE, onefile = FALSE, paper = "special")
 	plot(cmap, col=mapCol)
 	dev.off()
 }
