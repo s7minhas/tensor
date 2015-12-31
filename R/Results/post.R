@@ -60,6 +60,7 @@ makeLabel = function(x, long=TRUE){
 
 ############################
 outPath='~/Research/WardProjects/tensor/Text/Graphics/'
+outPath='~/Research/WardProjects/tensor/Text/epsGraphics/'
 ############################
 
 ############################
@@ -86,7 +87,8 @@ lapply(BPS, function(beta){
 		legend.position='none',
 		panel.background=element_blank()
 		)
-	fname=paste0(outPath, beta[[4]], '_trace.pdf')	
+	# fname=paste0(outPath, beta[[4]], '_trace.pdf')	
+	fname=paste0(outPath, beta[[4]], '_trace.eps')	
 	print( ggTrace )
 	ggsave(filename=fname, plot=ggTrace, width=6, height=4)
 	} )
@@ -152,7 +154,8 @@ lapply(BPS, function(beta){
 		panel.grid.major=element_blank(),
 		panel.grid.minor=element_blank()
 		)
-	fname=paste0(outPath, beta[[4]], '_coef.pdf')		
+	# fname=paste0(outPath, beta[[4]], '_coef.pdf')		
+	fname=paste0(outPath, beta[[4]], '_coef.eps')		
 	ggCoef
 	ggsave(filename=fname, plot=ggCoef, width=6, height=6)
 	})
@@ -188,8 +191,10 @@ tcols[which(
 		)]='black'
 
 lapply(BPS, function(beta){
-	fname=paste0(outPath, beta[[4]], '_net.pdf')	
-	pdf(file=fname, width=12, height=5)
+	# fname=paste0(outPath, beta[[4]], '_net.pdf')	
+	# pdf(file=fname, width=12, height=5)
+	fname=paste0(outPath, beta[[4]], '_net.eps')	
+	postscript(file=fname, width=12, height=5, fonts=c("serif", "Palatino"))	
 	par(mfrow=c(1,2), mar=c(1,1,1,1), mgp=c(1.5,.5,0))		
 	B = beta[[1]]
 	LB = apply( B[,,burn:dim(B)[3]], c(1,2), quantile, prob=alpha )

@@ -7,6 +7,7 @@ if( Sys.info()['user']=='mw160' ){ source('~/git/tensor/R/setup.R') }
 # Load raw DV
 load(paste0(inPath, 'rawDV.rda'))
 outPath='~/Research/WardProjects/tensor/Text/Graphics/'
+outPath='~/Research/WardProjects/tensor/Text/epsGraphics/'
 ####
 
 ####
@@ -51,7 +52,8 @@ ggDV=ggDV + theme(
 	panel.grid.minor=element_blank()
 	)
 ggDV
-fname=paste0(outPath, 'dvMonthly.pdf')	
+# fname=paste0(outPath, 'dvMonthly.pdf')
+fname=paste0(outPath, 'dvMonthly.eps')	
 ggsave(filename=fname, plot=ggDV, width=14, height=6)
 ####
 
@@ -102,7 +104,8 @@ ggDV=ggDV + theme(
 	panel.grid.minor=element_blank()
 	)
 ggDV
-fname=paste0(outPath, 'US_CHN_Monthly.pdf')	
+# fname=paste0(outPath, 'US_CHN_Monthly.pdf')	
+fname=paste0(outPath, 'US_CHN_Monthly.eps')	
 ggsave(filename=fname, plot=ggDV, width=14, height=4)
 ####
 

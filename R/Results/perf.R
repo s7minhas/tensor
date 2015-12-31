@@ -62,6 +62,7 @@ makeLabel = function(x, long=TRUE){
 
 ############################
 outPath='~/Research/WardProjects/tensor/Text/Graphics/'
+outPath='~/Research/WardProjects/tensor/Text/epsGraphics/'
 ############################
 
 ############################
@@ -124,7 +125,8 @@ lapply(1:length(pds), function(pd){
 		axis.text.x = element_text(angle=45, hjust=1, size=4),
 		axis.text.y = element_text(size=4)
 		)
-	fname=paste0(outPath, pds[pd], '_iperf.pdf')	
+	# fname=paste0(outPath, pds[pd], '_iperf.pdf')	
+	fname=paste0(outPath, pds[pd], '_iperf.eps')		
 	ggIPerf
 	ggsave(filename=fname, plot=ggIPerf, width=8, height=5)
 } )

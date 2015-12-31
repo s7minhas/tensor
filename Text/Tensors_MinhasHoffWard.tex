@@ -138,19 +138,6 @@ While both the ERGM based and latent space approaches effectively incorporate st
 
 Thus in this paper we present a novel approach developed by \citet{hoff:2015} that encompasses the benefits of many of these earlier approaches and also begins to address some of the limitations of each. Namely, the method that we review here provides: a way to analyze longitudinal networks, provides an explicit representation of network dependencies, such as reciprocity and transitivity, between dyads while still allowing for heterogeneity between dyads, and enables us to model ``multiplex'' networks in a regression context. 
 
- % \begin{table}[ht]
- % 	\centering
- % 	\begin{tabular}{l|ccc}
- % 		Model & Higher Order Dependencies & Longitudinal & Endogenous \\ \hline
- % 		SAOM & \checkmark & \checkmark & \\
- % 		TERGM & \checkmark & \checkmark & \\
- % 		MRQAP &  & \checkmark & \\
- % 		MLTR & \checkmark & \checkmark & \checkmark \\
- % 	\end{tabular}
- % 	\label{tab:modComp}
- % 	\caption{Comparison of extant modeling approaches. }
- % \end{table}
-
 \section{Tensor Model}
 
 To begin our discussion on this approach we first introduce some notation, say that $(\mathbf y_t)$ represents a time series of vectors representing the dyadic interactions for $m$ countries through the period $t = 1, \ldots, n$, so that $\mathbf y_t \in \mathbb{R}^{m^2}$ (this is just the matrix $\bl Y_t$ rewritten as a vector). A simple way to model the evolution of this time series is as a function of past behavior. A modeling framework that lends itself to this type of set up is a vector autoregression (VAR) model. The VAR model has been employed in macroeconomic research ever since \citet{sims:1980} introduced the approach, and it remains a useful tool for political scientists, as evidenced by the work of \citet{brandt:freeman:2006, davies:2014, tahk:2015}. The VAR model is a generalization of the univariate autoregressive model that accounts for linear interdependencies among multiple time series. The benefit of this approach is that it models a set of time series as resulting from a dynamic and endogenous process, rather than imposing a priori assumptions of exogeneity between the various explanatory variables. 
@@ -214,8 +201,6 @@ The parameters in our completed model formulation have the following dimensions:
 
 We use this modeling framework to estimate models for verbal and material cooperation and conflict between states. Information on these dimensions is collected from the Integrated Crisis Early Warning System (ICEWS) event data project. The ICEWS data along with extensive documentation are available on \url{dataverse.org} \citep{icews:2015:aggregations,icews:2015:data}. The ICEWS event data are constructed by applying natural language processing and graph theory techniques \citep{boschee:natarajan:etal:2013} to a corpus of about 30 million media reports from about 275 local and global news sources in or translated to English.  Each media report is coded in accordance with an ontology of events that is derived from the Conflict and Median Event Observation (CAMEO) scheme \citep{schrodt:etal:2009}. 
 
- % \url{http://eventdata.psu.edu/cameo.dir/CAMEO.CDB.09b5.pdf} # Removing broken link
-
 This results in relevant reports being tagged as involving a set of actors and by the interactions that took place between them. We choose to focus on interactions among the top fifty countries by GDP during time period from the beginning of 2001 to the end of 2014. And, like all good social scientists, we use a $2 \times 2$ table to classify; herein, across the distinctions between actions and words on the one hand and conflict and cooperation on the other.  Thus, we aggregate events for this set of countries and temporal span into the so-called ``quad variables'', originally developed by \citet{duval:thompson:1980}. \citet{yonamine:2011} provides a definition for each:
 
 \begin{itemize}
@@ -233,7 +218,6 @@ Given that the quad variables are generated using an event data approach, we hav
 	\caption{Quad variable counts over time.}
 	\label{fig:dvAgg}
 \end{figure*}
-% \FloatBarrier
 
 \begin{figure*}[ht]
 	\centering
@@ -260,18 +244,10 @@ Figure~\ref{fig:trace} shows the trace plots after running 8,000 iterations of t
 
 \begin{figure}[ht]
 	\centering
-	% \begin{tabular}{cc}
-		% \subfloat[][Cooperation Model]{
-			\includegraphics[width=.45\textwidth]{Coop_trace}
-		% \label{fig:coopTrace}} &
-		% \subfloat[][Conflict Model]{
-			% \includegraphics[width=.45\textwidth]{Conf_trace}
-		% \label{fig:confTrace}} 		
-	% \end{tabular}
+	\includegraphics[width=.45\textwidth]{Coop_trace}
 	\caption{Trace plots for each of the six $\bl B_3$ parameter estimates from the cooperation model. Different colors correspond to different parameter estimates.}
 	\label{fig:trace}
 \end{figure}
-% \FloatBarrier
 
 \subsection{Direct, Reciprocal, \& Transitive Effects}
 
@@ -292,7 +268,6 @@ Along the x-axis of this figure, we list the direct ($ij$), reciprocal ($ji$), a
 	\caption{Relational multilinear regression results for $\bl B_3$. Darker colors indicate that the coefficient estimate is significantly different from zero at a 95\% credible interval, while lighter the same for a 90\%. Grey indicates that the estimate is not significantly different from zero at either of those intervals.}
 	\label{fig:B3}
 \end{figure*}
-% \FloatBarrier
 
 For each of the dyadic, relational variables examined in Figure~\ref{fig:B3}, the largest estimated coefficient comes from the direct, lagged parameter, indicating that the strongest predictor of relations at a given point a time are what they were in the period before. For instance, the regression estimates for the Material Conflict variable, shown in the bottom half of Figure~\ref{fig:confB3}, the parameter estimate for Material Conflict$_{ij, t-1}$ is twice as large as that of Verbal Conflict$_{ij, t-1}$. This general trend persists for the predictors of Verbal Conflict and for the results of the cooperation model. 
 
@@ -304,14 +279,7 @@ The key implication of these findings for the reciprocal parameters in our model
 
 This all makes a good deal of intuitive sense: if $i$ and $j$ are at a high level of conflict on issue A, and $i$ and $k$ are at war on issue B, why would we expect $j$ and $k$ to enter a conflict with one another? On the cooperative side of things, it seems more plausible. And this is exactly what the empirical estimates suggest.
 
-\subsection{$\bl B_{1}$ \& $\bl B_{2}$} % Better title?
-
-% \begin{figure}[ht]
-% 	\centering
-% 	\includegraphics[width=.45\textwidth]{map}
-% 	\caption{Legend for network plots shown in Figure~\ref{fig:B12}.}
-% 	\label{fig:map}
-% \end{figure}
+\subsection{$\bl B_{1}$ \& $\bl B_{2}$}
 
 The posterior distributions of $\bl B_{1}$ and $\bl B_{2}$ are summarized in Figures~\ref{fig:coopB12} for cooperation and \ref{fig:confB12} for the conflict models. Both these parameters contain $m \times m$ regression coefficients. The $ij$ coefficient in $\bl B_{1}$ provides a measure of how likely $i$ is to send, for example, a verbal or material cooperative event to a third party, $k$, given that $j$ has already sent a cooperative event to $k$. Similarly, the $ij$ coefficient in $\bl B_{2}$ provides a measure of how likely $i$ is to receive a cooperative event from a third party, $k$, given that $j$ has already received a cooperative event from $k$. 
 
@@ -343,21 +311,12 @@ Nonetheless, there are additional findings to be gleaned from the network visual
 
 This type of geographic clustering is still apparent as we move to examining $\bl B_2$ from the  conflict model, shown in the right panel of Figure~\ref{fig:confB12}. Here we can see that Hungary (HUN) is more likely to receive conflictual events from countries that have sent those type of events to Austria (AUT). However, there are a number of relationships here that go beyond simple geographic clustering. For example, South Africa (ZAF) is significantly more likely to receive conflictual events from countries that have threatened India (IND); and Argentina is more likely to receive conflictual events from countries that have previously threatened Spain. 
 
-% The performance float is just positioned here so it doesnt get pushed to a new page when the performance analysis section starts BUT IT NOW DOES
 \begin{figure*}[!ht]
 	\centering
-	% \begin{tabular}{cc}
-		% \subfloat[][Cooperation Model]{
-			% \includegraphics[width=.9\textwidth]{Coop_iperf}
-		% \label{fig:coopPerf}}
-		% \subfloat[][Conflict Model]{
-			\includegraphics[width=.8\textwidth]{Conf_iperf}
-		% \label{fig:confPerf}}		
-	% \end{tabular}
+	\includegraphics[width=.8\textwidth]{Conf_iperf}
 	\caption{Root-mean-squared error values for every directed country-pair time series.}
 	\label{fig:perf}
 \end{figure*}
-% \FloatBarrier
 
 \subsection{Performance analysis}
 
@@ -375,13 +334,9 @@ At a substantive level, we know that the world around us is highly organized in 
 
 The substantive findings that emerge from this suggest something both about the time dependencies and the network effects that permeate the ebb and flow of international politics. 
 
-
-
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
 %\appendix
-
-
 
 %% If you have bibdatabase file and want bibtex to generate the
 %% bibitems, please use
@@ -802,35 +757,3 @@ Yonamine, Jay (2011).
 \endinput
 %%
 %% End of file `elsarticle-template-harv.tex'.
-
-
-% Excluded floats
-% % credit to halterman once he gets back with desired reference
-% \begin{table*}[ht]
-% \centering
-% 	\begin{tabular}{ l l }
-% 		Verbal Cooperation & Material Cooperation  \\ \hline
-% 			Make Public Statement & Engage in Diplomatic Cooperation  \\
-% 			Appeal & Engage in Material Cooperation \\
-% 			Express Intent To Cooperate & Provide Aid  \\
-% 			Consult & Yield  \\
-% 			Engage in Diplomatic Cooperation & Investigate \\[12pt]
-
-% 		Verbal Conflict & Material Conflict \\ \hline
-% 			Demand & Exhibit Force Posture \\
-% 			Disapprove & Reduce Relations \\
-% 			Reject & Coerce  \\
-% 			Threaten & Assault  \\
-% 			Protest & Fight \\
-% 			& Use Unconventional Mass Violence \\
-% 	\end{tabular}
-% \caption{CAMEO Code to Quad Classification Mapping}
-% \label{tab:cameo}
-% \end{table*}
-
-
-% Parts of old intro
-
-% \cite{gartzke:westerwinter:2014} provide a recent paragon of research design in the field of international relations. In this research, they examine how expected changes in the distribution of power affects incentives for the so-called rising powers to sculpt their policies, so that they are more aggressive when they expect to be more powerful. At the same time, their argument states that countries have an increased incentive to undertake conflict now if they are currently more dominant than they can expect to be in the future. This notion leads to an expectation of preventative war as a consequence of power transition \citep{levy:1987}. Three hypotheses are generated: (a) shifts in military power among similar states are less likely to generate onsets of international conflict than shifts among dissimilar states, (b) military shifts among those countries with direct diplomatic relationships are not threatening and do not lead to the onset of international conflicts, and (c) changes among balances in military and economic power in states that are central in the international diplomatic network are more pertinent for war and peace than are the relative characteristics of non-central states.
-
-% The research design for the \citep{gartzke:westerwinter:2014} study is canonical by current standards in 2015. It takes a population of state dyads -- pairs of countries, such as the United States and Canada -- over the period from 1950 until 2000. This results in approximately $1.5 \times 10^6$ dyadic observations, though often they are treated as though the relationship in each dyad is symmetric, which reduces this number by half. The dependent variable is binary and has a value of $1$ in each year in which an international war begins, and otherwise is $0$. This variable is non-zero only in a very small number instances, out of the one and one-half million observations. The independent variables are created such that they, also, are expressed dyadically, even if they are really characteristics of individual states. Specifically, military capabilities are observed in each country and the difference in military capabilities within a dyad is used as a measure of military balance within the dyad.\footnote{It is actually the expected difference where expectations are generated by trend extrapolation.}  Other putatively independent variables are created in a similar way, by a comparison of the values held by each country. These include measures of voting similarity, the joint diplomatic centrality of the dyad, and others. Additionally, economic dependence is measured as the lower of the trade-to-GDP ratios of the two countries in the dyad. In this way, dyadic measures are created from the attributes of each country. This idea is longstanding in the international relations literature, perhaps stemming from the idea, which is also included in Gartzke and Westerwinter, of creating a dyadic score for democracy by taking the lower democracy score within the dyad as a characteristic of the jointness of the level of democracy.
