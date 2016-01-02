@@ -11,3 +11,7 @@ Previous models of international conflict have suffered two shortfalls. They ten
 Replication Instructions
 ---
 All necessary data to replicate study is stored in the following [Dropbox folder](https://www.dropbox.com/sh/q6q9azqoiziolnh/AAB1Gh5WT2FZfnEQAmpYvKSpa?dl=0).
+
+Publication Outlet
+---
+Forthcoming in Journal of Peace Research
