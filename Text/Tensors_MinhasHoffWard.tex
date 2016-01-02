@@ -159,7 +159,62 @@ Thus the data that we are modeling no longer takes the shape of a simple series 
 
 \begin{figure}[ht]
 	\centering
-	\resizebox{.5\textwidth}{!}{\input{tensorViz.tex}}
+	\resizebox{.5\textwidth}{!}{
+		\begin{tikzpicture}
+
+			% Green
+			\begin{scope}[xshift=1cm, yshift=1cm]
+			\node{
+				\begin{tikzpicture}[scale=.5]
+					 \draw[thin, black,fill=green3] (0,0) grid (4,4) rectangle (0,0) ;
+				\end{tikzpicture}
+			};
+			\end{scope}
+
+			\begin{scope}[xshift=.5cm, yshift=.5cm]
+			\node[](green){
+				\begin{tikzpicture}[scale=.5]
+					 \draw[thin, black,fill=green2] (0,0) grid (4,4) rectangle (0,0) ;
+				\end{tikzpicture}
+			} ;
+			\end{scope}
+
+			\begin{scope}
+			\node{
+				\begin{tikzpicture}[scale=.5]
+					 \draw[thin, black,fill=green1] (0,0) grid (4,4) rectangle (0,0) ;
+		%			\node at (3.5,3.5) { \tiny{ $y_{i j v t }$ } }; 
+				\end{tikzpicture}
+			};
+			\end{scope}
+			
+			% Blue
+			\begin{scope}[xshift=4.5cm, yshift=1cm]
+			\node{
+				\begin{tikzpicture}[scale=.5]
+					 \draw[thin, black,fill=blue3] (0,0) grid (4,4) rectangle (0,0) ;
+				\end{tikzpicture}
+			};
+			\end{scope}
+
+			\begin{scope}[xshift=4cm, yshift=.5cm]
+			\node[](blue){
+				\begin{tikzpicture}[scale=.5]
+					 \draw[thin, black,fill=blue2] (0,0) grid (4,4) rectangle (0,0) ;
+				\end{tikzpicture}
+			};
+			\end{scope}
+
+			\begin{scope}[xshift=3.5cm]
+			\node{
+				\begin{tikzpicture}[scale=.5]
+					 \draw[thin, black,fill=blue1] (0,0) grid (4,4) rectangle (0,0) ;
+				\end{tikzpicture}
+			};
+			\end{scope}
+			
+		\end{tikzpicture}	
+	}
 	\caption{Tensor representation of longitudinal dyadic, representational measures. The green and blue colors represent different relational measures and darker shading indicates later time periods. Specifically, we show a tensor with dimensions of $4 \times 4 \times 2 \times 3$, where 4 represents the number of actors, 2 the number of relational measures, and 3 the number of time points.}
 	\label{fig:tensViz}
 \end{figure}
