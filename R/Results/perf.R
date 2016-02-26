@@ -100,17 +100,12 @@ indivPerf = lapply(1:length(pds), function(pd){
 
 ############################
 # Tile maps
-lapply(1:length(pds), function(pd){
-	perf = indivPerf[[pd]]
-	ggData = NULL
-	for(var in 1:dim(perf)[3]){
-		pull = perf[,,var]
-		meltPull = melt( pull )
-		meltPull = cbind(var = dimnames(perf)[[3]][var], meltPull)
-		ggData = rbind(ggData, meltPull)
-	}
+loadPkg('gridExtra')
+makePerfMap=function(ggData, perf, sortByVar){
 	ggData$var = makeLabel(ggData$var)
 	ggData$var = factor(ggData$var, levels=unique(ggData$var))
+	ggData$Var1 = factor(ggData$Var1, levels=names(sort(rowSums(perf[,,sortByVar]))))
+	ggData$Var2 = factor(ggData$Var2, levels=names(sort(rowSums(perf[,,sortByVar]))))	
 
 	ggIPerf=ggplot(ggData, aes(x=Var1, y=Var2, fill=value)) 
 	ggIPerf=ggIPerf + xlab('') + ylab('')
@@ -125,9 +120,22 @@ lapply(1:length(pds), function(pd){
 		axis.text.x = element_text(angle=45, hjust=1, size=4),
 		axis.text.y = element_text(size=4)
 		)
-	# fname=paste0(outPath, pds[pd], '_iperf.pdf')	
-	fname=paste0(outPath, pds[pd], '_iperf.eps')		
-	ggIPerf
-	ggsave(filename=fname, plot=ggIPerf, width=8, height=5)
-} )
+	return(ggIPerf)
+}
+
+perf = indivPerf[[2]]
+ggData = NULL
+for(var in 1:dim(perf)[3]){
+	pull = perf[,,var]
+	meltPull = melt( pull )
+	meltPull = cbind(var = dimnames(perf)[[3]][var], meltPull)
+	ggData = rbind(ggData, meltPull)
+}
+
+# Make perf maps
+ggIPerf = makePerfMap(ggData, perf, 'matlConf')
+
+# fname=paste0(outPath, pds[pd], '_iperf.pdf')	
+fname=paste0(outPath, pds[2], '_iperf.eps')		
+ggsave(filename=fname, plot=ggIPerf, width=8, height=5)
 ############################
