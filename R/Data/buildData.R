@@ -1,7 +1,8 @@
 ####
 if( Sys.info()['user']=='janus829' | Sys.info()['user']=='s7m' ) { 
 	source('~/Research/WardProjects/tensor/R/setup.R');
-	mysqlSetup('shahryarm', 'green29tumble', 'event_data') 
+	load('~/Dropbox/Research/icewsServerInfo.rda')
+	mysqlSetup(user=icewsSN, pw=icewsPwd, db='event_data', host=icewsHost) 
 }
 
 if( Sys.info()['user']=='mw160' ){ source('~/git/tensor/R/setup.R') }

@@ -32,7 +32,7 @@ theme_set(theme_bw())
 source( paste0(rFuncs, '/tfunctions.r') )
 
 # Other functions
-mysqlSetup = function(user=NULL, pw=NULL, db=NULL, host="152.3.32.10") {
+mysqlSetup = function(user=NULL, pw=NULL, db=NULL, host=NULL) {
 	tryCatch(conn <<- dbConnect(MySQL(), user=user, password=pw, 
 		dbname=db, host=host), 
 	error=function(e) warning("MySQL connection does not work") )
