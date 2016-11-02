@@ -2,7 +2,7 @@
 
 Authors
 ---
-[Shahryar Minhas](s7minhas.com), [Peter D. Hoff](http://www.stat.washington.edu/people/pdhoff/), & [Michael D. Ward](https://web.duke.edu/methods/)
+[Shahryar Minhas](http://s7minhas.com/), [Peter D. Hoff](http://www.stat.washington.edu/people/pdhoff/), & [Michael D. Ward](https://web.duke.edu/methods/)
 
 Abstract
 ---
