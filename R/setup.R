@@ -1,9 +1,9 @@
 rm(list=ls())
 
 if(Sys.info()['user']=='janus829' | Sys.info()['user']=='s7m'){
-	inPath='~/Dropbox/Research/WardProjects/tensor/Data/toModel/';
-	outPath='~/Dropbox/Research/WardProjects/tensor/Data/fromModel/';
-	rFuncs='~/Research/WardProjects/tensor/R/Funcs/';
+	inPath='~/Dropbox/Research/tensor/Data/toModel/';
+	outPath='~/Dropbox/Research/tensor/Data/fromModel/';
+	rFuncs='~/Research/tensor/R/Funcs/';
 }
 
 if(Sys.info()['user']=='mw160' | Sys.info()['user']=='mw160'){

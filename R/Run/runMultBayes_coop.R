@@ -1,5 +1,5 @@
 if( Sys.info()['user']=='janus829' | Sys.info()['user']=='s7m' ) { 
-	source('~/Research/WardProjects/tensor/R/setup.R') 
+	source('~/Research/tensor/R/setup.R') 
 }
 
 if( Sys.info()['user']=='mw160' ){ source('~/git/tensor/R/setup.R') }
