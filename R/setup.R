@@ -1,15 +1,11 @@
 rm(list=ls())
 
 if(Sys.info()['user']=='janus829' | Sys.info()['user']=='s7m'){
-	inPath='~/Dropbox/Research/tensor/Data/toModel/';
-	outPath='~/Dropbox/Research/tensor/Data/fromModel/';
+	# dPath='~/Dropbox/Research/tensor/'
+	dPath='/Volumes/Samsung_X5/Dropbox/Research/tensor/'
+	inPath=paste0(dPath,'Data/toModel/')
+	outPath=paste0(dPath,'Data/fromModel/')
 	rFuncs='~/Research/tensor/R/Funcs/';
-}
-
-if(Sys.info()['user']=='mw160' | Sys.info()['user']=='mw160'){
-    inPath='~/Dropbox/tensor/Data/toModel/';
-    outPath='~/Dropbox/tensor/Data/fromModel/';
-    rFuncs='~/git/tensor/R/Funcs/';
 }
 
 # General functions/libraries
